@@ -1,0 +1,69 @@
+FORMAT: 1A
+HOST: https://api.securecheckout.com/v1/reporting/
+
+# Figure Commerce Reporting
+
+Figure Commerce Reporting is an API for consuming data about transactions placed through the Figure Commerce e-commerce platform.
+
+## Headers
+
+There are 2 HTTP Headers used by the reporting API:
+
++ Content-Type
++ X-Auth-Token
+
+The *Content-Type* header is a standard header and should be set to application/json for all requests.
+
+The *X-Auth-Token* header is used to authenticate with the API server. To obtain an API key for your application you will need to contact Offset Partners LLC to request access.
+
+
+
+## Group Customers
+Resources related to Customers.
+
+
+## Customers [/customers]
+
+
+### Get Customer [GET /customers/{id}]
+
++ Parameters
+  + id: ` `(number, required) - Customer Id
+
+
++ Request (application/json)
+
+    + Headers
+
+            X-Auth-Token: XXXXXXXXX
+
++ Response 200 (application/json)
+
+    + Body
+
+            {"id":"42","first_name":"John","last_name":"Doe","email":"example@commercebyfigure.com","status":"Active","state":"CA","order_count":"0","order_total":"0.00","last_order":"0000-00-00 00:00:00","last_order_total":"0.00","last_update":"2018-04-18 16:14:00","created":"2018-04-18 16:14:00","signup_email_last_sent":"2018-04-18 16:14:00"}
+
+## Group Orders
+Resources related to Orders.
+
+
+## Orders [/orders]
+
+
+### Get Order [GET /orders/{id}]
+
++ Parameters
+  + id: ` `(number, required) - Order Id
+
+
++ Request (application/json)
+
+    + Headers
+
+            X-Auth-Token: XXXXXXXXX
+
++ Response 200 (application/json)
+
+    + Body
+
+            {"id":"42","datestamp":"2018-03-23 16:24:15","last_update":"2018-03-23 16:24:15","status":"","subtotal":"45.00","tax":"3.15","shipping":"20.00","discount":"9.00","credits":"0.00","refund":"0.00","total":"59.15","customer_id":"1","address":"","address_2":"","address_id":"3979","birthday":"1982-11-1","city":"","company":"","credit_id":"19","credit_number":"4242","credit_type":"Visa","customer_credits":"0.00","discount_customer":"0.2","email":"example@commercebyfigure.com","first_name":"John","gift_message":"","instructions":"","item_count":"1","last_name":"Doe","order_id":"42","order_type":"Web","payment_status":"Paid","phone":"707-287-6262","salutation":"Mr.","shipping_address":"770 3rd St E","shipping_address_2":"","shipping_city":"Sonoma","shipping_company":"","shipping_first_name":"John","shipping_id":"3979","shipping_last_name":"Doe","shipping_method":"11","shipping_method_carrier":"FedEx","shipping_method_code":"FDXGND","shipping_method_name":"Ground","shipping_phone":"707-287-6262","shipping_state":"CA","shipping_title":"Shipping Address","shipping_zip":"95476","ship_status":"Not Shipped","state":"","tax_rate":"8.75","transaction_id":"36","zip":"","products":[{"id":"42","sku":"H","name":"2017 Pinot Meunier","type":"","bottle_size":"750mL","retail_price":"0.00","discount":"0.00","discount_type":"","price":"45","quantity":"1","status":"","description":"2017 Pinot Meunier ","image":"","stock_status":"","shipped":"0","created":"2018-03-23 16:24:18"}]}
