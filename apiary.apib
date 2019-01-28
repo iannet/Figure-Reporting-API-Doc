@@ -25,7 +25,7 @@ Resources related to Customers.
 ## Customers [/customers]
 
 
-### Get Customer [GET /customers/{id}]
+### Get Customer [GET /reporting/customers/{id}]
 
 + Parameters
   + id: ` `(number, required) - Customer Id
@@ -43,6 +43,93 @@ Resources related to Customers.
 
             {"id":"42","first_name":"John","last_name":"Doe","email":"example@commercebyfigure.com","status":"Active","state":"CA","order_count":"0","order_total":"0.00","last_order":"0000-00-00 00:00:00","last_order_total":"0.00","last_update":"2018-04-18 16:14:00","created":"2018-04-18 16:14:00","signup_email_last_sent":"2018-04-18 16:14:00"}
 
+
+
+### Get Customers by Last Update Time [GET /reporting/customers/last-update/{start}/{end}/{limit}/{page}]
+
++ Parameters
+  + end: ` `(number, required) - Unix Time stamp for end of reporting period
+  + limit: ` `(number, required) - Number of records returned per page
+  + page: ` `(number, required) - Page Number
+  + start: ` `(number, required) - Unix Time stamp for beginning of reporting period
+
+
++ Request (application/json)
+
+    + Headers
+
+            X-Auth-Token: XXXXXXXXX
+
++ Response 200 (application/json)
+
+    + Body
+
+            {"17":{"id":"17","first_name":"Jane","last_name":"Doe","email":"janedoe@commercebyfigure.com","status":"Active","state":"","order_count":"0","order_total":"0.00","last_order":"0000-00-00 00:00:00","last_order_total":"0.00","last_update":"2018-04-17 10:34:59","created":"2018-02-13 09:16:59","active_account":"Yes","created_by":"Website","mail_marketing_opt_in":"Yes","marketing_opt_in":"Yes","phone":"707-555-2821","phone_call_opt_in":"Yes","signup_email_last_sent":"2018-02-13 09:16:59","signup_ip_address":"67.161.61.171"},"42":{"id":"42","first_name":"John","last_name":"Doe","email":"example@commercebyfigure.com","status":"Active","state":"CA","order_count":"0","order_total":"0.00","last_order":"0000-00-00 00:00:00","last_order_total":"0.00","last_update":"2018-04-18 16:35:48","created":"2018-04-18 15:14:00","signup_email_last_sent":"2018-04-18 16:14:00"}}
+
+
+
+### Get Customers by Signup Date [GET /reporting/customers/created/{start}/{end}]
+
++ Parameters
+  + end: ` `(number, required) - Date for end of the reporting period
+  + start: ` `(string, required) - Date for start of the reporting period
+
+
++ Request (application/json)
+
+    + Headers
+
+            X-Auth-Token: XXXXXXXXX
+
++ Response 200 (application/json)
+
+    + Body
+
+            {"17":{"id":"17","first_name":"Jane","last_name":"Doe","email":"janedoe@commercebyfigure.com","status":"Active","state":"","order_count":"0","order_total":"0.00","last_order":"0000-00-00 00:00:00","last_order_total":"0.00","last_update":"2018-04-17 10:34:59","created":"2018-02-13 09:16:59","active_account":"Yes","created_by":"Website","mail_marketing_opt_in":"Yes","marketing_opt_in":"Yes","phone":"707-555-2821","phone_call_opt_in":"Yes","signup_email_last_sent":"2018-02-13 09:16:59","signup_ip_address":"67.161.61.171"},"42":{"id":"42","first_name":"John","last_name":"Doe","email":"example@commercebyfigure.com","status":"Active","state":"CA","order_count":"0","order_total":"0.00","last_order":"0000-00-00 00:00:00","last_order_total":"0.00","last_update":"2018-04-18 16:35:48","created":"2018-04-18 15:14:00","signup_email_last_sent":"2018-04-18 16:14:00"}}
+
+## Group Inventory
+Resources related to Inventory.
+
+
+## Inventory [/inventory]
+
+
+### Get Current Inventory Levels [GET /reporting/inventory]
+
+
++ Request (application/json)
+
+    + Headers
+
+            X-Auth-Token: XXXXXXXXX
+
++ Response 200 (application/json)
+
+    + Body
+
+            {"ABC-CAB":{"sku":"ABC-2015-CAB","quantity":"120"},"ABC-PINOT":{"sku":"ABC-2015-PN","quantity":"480"}}
+
+
+
+### Get Inventory Movements by Date [GET /reporting/inventory/transactions/{start}/{end}]
+
++ Parameters
+  + end: ` `(number, required) - Date for end of the reporting period
+  + start: ` `(string, required) - Date for start of the reporting period
+
+
++ Request (application/json)
+
+    + Headers
+
+            X-Auth-Token: XXXXXXXXX
+
++ Response 200 (application/json)
+
+    + Body
+
+            [{"sku":"ABC-2015-CAB","timestamp":"2018-03-14 13:17:07","quantity":-1,"order_number":"1","user":"","note":""}]
+
 ## Group Orders
 Resources related to Orders.
 
@@ -50,7 +137,7 @@ Resources related to Orders.
 ## Orders [/orders]
 
 
-### Get Order [GET /orders/{id}]
+### Get Order [GET /reporting/orders/{id}]
 
 + Parameters
   + id: ` `(number, required) - Order Id
@@ -67,3 +154,91 @@ Resources related to Orders.
     + Body
 
             {"id":"42","datestamp":"2018-03-23 16:24:15","last_update":"2018-03-23 16:24:15","status":"","subtotal":"45.00","tax":"3.15","shipping":"20.00","discount":"9.00","credits":"0.00","refund":"0.00","total":"59.15","customer_id":"1","address":"","address_2":"","address_id":"3979","birthday":"1982-11-1","city":"","company":"","credit_id":"19","credit_number":"4242","credit_type":"Visa","customer_credits":"0.00","discount_customer":"0.2","email":"example@commercebyfigure.com","first_name":"John","gift_message":"","instructions":"","item_count":"1","last_name":"Doe","order_id":"42","order_type":"Web","payment_status":"Paid","phone":"707-287-6262","salutation":"Mr.","shipping_address":"770 3rd St E","shipping_address_2":"","shipping_city":"Sonoma","shipping_company":"","shipping_first_name":"John","shipping_id":"3979","shipping_last_name":"Doe","shipping_method":"11","shipping_method_carrier":"FedEx","shipping_method_code":"FDXGND","shipping_method_name":"Ground","shipping_phone":"707-287-6262","shipping_state":"CA","shipping_title":"Shipping Address","shipping_zip":"95476","ship_status":"Not Shipped","state":"","tax_rate":"8.75","transaction_id":"36","zip":"","products":[{"id":"42","sku":"H","name":"2017 Pinot Meunier","type":"","bottle_size":"750mL","retail_price":"0.00","discount":"0.00","discount_type":"","price":"45","quantity":"1","status":"","description":"2017 Pinot Meunier ","image":"","stock_status":"","shipped":"0","created":"2018-03-23 16:24:18"}]}
+
+
+
+### Get Orders by Creation Date [GET /reporting/orders/created/{start}/{end}]
+
++ Parameters
+  + end: ` `(number, required) - Date for end of the reporting period
+  + start: ` `(string, required) - Date for start of the reporting period
+
+
++ Request (application/json)
+
+    + Headers
+
+            X-Auth-Token: XXXXXXXXX
+
++ Response 200 (application/json)
+
+    + Body
+
+            {"1":{"id":"1","datestamp":"2018-03-14 13:17:05","last_update":"2018-03-14 14:17:05","status":"","subtotal":"14.99","tax":"0.00","shipping":"30.00","discount":"0.00","credits":"0.00","refund":"0.00","total":"44.99","customer_id":"3","address":"123 Main Street","address_2":"","address_id":"6","city":"Anywhere","credit_number":"8431","credit_type":"American Express","discount_customer":"0","email":"eh@hugel.com","email_template":"","first_name":"Jane","group_id":"1","group_name":"Mailing List","item_count":"1","last_name":"Doe","order_id":"1","order_type":"Admin","payment_id":"1","payment_status":"Paid","phone":"","sales_agent":"Sales Agent","sale_credit":"...","shipping_address":"123 Main Street","shipping_address_2":"","shipping_city":"Anywhere","shipping_company":"","shipping_first_name":"Etienne","shipping_last_name":"Hugel","shipping_method":"1","shipping_method_carrier":"custom","shipping_method_code":"UPSGND","shipping_method_name":"Ground","shipping_phone":"(123) 456-7890","shipping_residential":"0","shipping_state":"PA","shipping_zip":"17000","ship_status":"Not Shipped","state":"PA","tax_rate":"0","transaction_id":"1","zip":"17000","products":[{"id":"1","sku":"12831","name":"Domaine Ch�ne","type":"","bottle_size":"","retail_price":"14.99","discount":"0.00","discount_type":"","price":"14.99","quantity":"1","status":"","description":"Domaine Ch�ne ","image":"//s3.amazonaws.com/efcheckout/figureapi/products/12831-9864.jpg","stock_status":"","shipped":"0","created":"2018-03-14 13:17:07"}]},"2":{"id":"2","datestamp":"2018-03-23 16:24:15","last_update":"2018-03-23 16:24:15","status":"","subtotal":"45.00","tax":"3.15","shipping":"20.00","discount":"9.00","credits":"0.00","refund":"0.00","total":"59.15","customer_id":"1","address":"","address_2":"","address_id":"3979","birthday":"1982-11-1","city":"","company":"","credit_id":"19","credit_number":"4242","credit_type":"Visa","customer_credits":"0.00","discount_customer":"0.2","email":"example@commercebyfigure.com","first_name":"John","gift_message":"","instructions":"","item_count":"1","last_name":"Doe","order_id":"42","order_type":"Web","payment_status":"Paid","phone":"707-287-6262","salutation":"Mr.","shipping_address":"770 3rd St E","shipping_address_2":"","shipping_city":"Sonoma","shipping_company":"","shipping_first_name":"John","shipping_id":"3979","shipping_last_name":"Doe","shipping_method":"11","shipping_method_carrier":"FedEx","shipping_method_code":"FDXGND","shipping_method_name":"Ground","shipping_phone":"707-287-6262","shipping_state":"CA","shipping_title":"Shipping Address","shipping_zip":"95476","ship_status":"Not Shipped","state":"","tax_rate":"8.75","transaction_id":"36","zip":"","products":[{"id":"42","sku":"H","name":"2017 Pinot Meunier","type":"","bottle_size":"750mL","retail_price":"0.00","discount":"0.00","discount_type":"","price":"45","quantity":"1","status":"","description":"2017 Pinot Meunier ","image":"","stock_status":"","shipped":"0","created":"2018-03-23 16:24:18"}]}}
+
+
+
+### Get Orders by Last Update Time [GET /reporting/orders/last-update/{start}/{end}/{limit}/{page}]
+
++ Parameters
+  + end: ` `(number, required) - Unix Time stamp for end of reporting period
+  + limit: ` `(number, required) - Number of records returned per page
+  + page: ` `(number, required) - Page Number
+  + start: ` `(number, required) - Unix Time stamp for beginning of reporting period
+
+
++ Request (application/json)
+
+    + Headers
+
+            X-Auth-Token: XXXXXXXXX
+
++ Response 200 (application/json)
+
+    + Body
+
+            {"1":{"id":"1","datestamp":"2018-03-14 13:17:05","last_update":"2018-03-14 14:17:05","status":"","subtotal":"14.99","tax":"0.00","shipping":"30.00","discount":"0.00","credits":"0.00","refund":"0.00","total":"44.99","customer_id":"3","address":"123 Main Street","address_2":"","address_id":"6","city":"Anywhere","credit_number":"8431","credit_type":"American Express","discount_customer":"0","email":"eh@hugel.com","email_template":"","first_name":"Jane","group_id":"1","group_name":"Mailing List","item_count":"1","last_name":"Doe","order_id":"1","order_type":"Admin","payment_id":"1","payment_status":"Paid","phone":"","sales_agent":"Sales Agent","sale_credit":"...","shipping_address":"123 Main Street","shipping_address_2":"","shipping_city":"Anywhere","shipping_company":"","shipping_first_name":"Etienne","shipping_last_name":"Hugel","shipping_method":"1","shipping_method_carrier":"custom","shipping_method_code":"UPSGND","shipping_method_name":"Ground","shipping_phone":"(123) 456-7890","shipping_residential":"0","shipping_state":"PA","shipping_zip":"17000","ship_status":"Not Shipped","state":"PA","tax_rate":"0","transaction_id":"1","zip":"17000","products":[{"id":"1","sku":"12831","name":"Domaine Ch�ne","type":"","bottle_size":"","retail_price":"14.99","discount":"0.00","discount_type":"","price":"14.99","quantity":"1","status":"","description":"Domaine Ch�ne ","image":"//s3.amazonaws.com/efcheckout/figureapi/products/12831-9864.jpg","stock_status":"","shipped":"0","created":"2018-03-14 13:17:07"}]},"2":{"id":"2","datestamp":"2018-03-23 16:24:15","last_update":"2018-03-23 16:24:15","status":"","subtotal":"45.00","tax":"3.15","shipping":"20.00","discount":"9.00","credits":"0.00","refund":"0.00","total":"59.15","customer_id":"1","address":"","address_2":"","address_id":"3979","birthday":"1982-11-1","city":"","company":"","credit_id":"19","credit_number":"4242","credit_type":"Visa","customer_credits":"0.00","discount_customer":"0.2","email":"example@commercebyfigure.com","first_name":"John","gift_message":"","instructions":"","item_count":"1","last_name":"Doe","order_id":"42","order_type":"Web","payment_status":"Paid","phone":"707-287-6262","salutation":"Mr.","shipping_address":"770 3rd St E","shipping_address_2":"","shipping_city":"Sonoma","shipping_company":"","shipping_first_name":"John","shipping_id":"3979","shipping_last_name":"Doe","shipping_method":"11","shipping_method_carrier":"FedEx","shipping_method_code":"FDXGND","shipping_method_name":"Ground","shipping_phone":"707-287-6262","shipping_state":"CA","shipping_title":"Shipping Address","shipping_zip":"95476","ship_status":"Not Shipped","state":"","tax_rate":"8.75","transaction_id":"36","zip":"","products":[{"id":"42","sku":"H","name":"2017 Pinot Meunier","type":"","bottle_size":"750mL","retail_price":"0.00","discount":"0.00","discount_type":"","price":"45","quantity":"1","status":"","description":"2017 Pinot Meunier ","image":"","stock_status":"","shipped":"0","created":"2018-03-23 16:24:18"}]}}
+
+## Orders Inventory [/orders/inventory]
+
+
+### Get Product Transactions by creation date [GET /reporting/orders/product-transations/{start}/{end}]
+
++ Parameters
+  + end: ` `(number, required) - Date for end of the reporting period
+  + start: ` `(string, required) - Date for start of the reporting period
+
+
++ Request (application/json)
+
+    + Headers
+
+            X-Auth-Token: XXXXXXXXX
+
++ Response 200 (application/json)
+
+    + Body
+
+            {"1":{"id":"1","datestamp":"2018-03-14 13:17:05","last_update":"2018-03-14 14:17:05","status":"","subtotal":"14.99","tax":"0.00","shipping":"30.00","discount":"0.00","credits":"0.00","refund":"0.00","total":"44.99","customer_id":"3","address":"123 Main Street","address_2":"","address_id":"6","city":"Anywhere","credit_number":"8431","credit_type":"American Express","discount_customer":"0","email":"eh@hugel.com","email_template":"","first_name":"Jane","group_id":"1","group_name":"Mailing List","item_count":"1","last_name":"Doe","order_id":"1","order_type":"Admin","payment_id":"1","payment_status":"Paid","phone":"","sales_agent":"Sales Agent","sale_credit":"...","shipping_address":"123 Main Street","shipping_address_2":"","shipping_city":"Anywhere","shipping_company":"","shipping_first_name":"Etienne","shipping_last_name":"Hugel","shipping_method":"1","shipping_method_carrier":"custom","shipping_method_code":"UPSGND","shipping_method_name":"Ground","shipping_phone":"(123) 456-7890","shipping_residential":"0","shipping_state":"PA","shipping_zip":"17000","ship_status":"Not Shipped","state":"PA","tax_rate":"0","transaction_id":"1","zip":"17000","products":[{"id":"1","sku":"12831","name":"Domaine Ch�ne","type":"","bottle_size":"","retail_price":"14.99","discount":"0.00","discount_type":"","price":"14.99","quantity":"1","status":"","description":"Domaine Ch�ne ","image":"//s3.amazonaws.com/efcheckout/figureapi/products/12831-9864.jpg","stock_status":"","shipped":"0","created":"2018-03-14 13:17:07"}]},"2":{"id":"2","datestamp":"2018-03-23 16:24:15","last_update":"2018-03-23 16:24:15","status":"","subtotal":"45.00","tax":"3.15","shipping":"20.00","discount":"9.00","credits":"0.00","refund":"0.00","total":"59.15","customer_id":"1","address":"","address_2":"","address_id":"3979","birthday":"1982-11-1","city":"","company":"","credit_id":"19","credit_number":"4242","credit_type":"Visa","customer_credits":"0.00","discount_customer":"0.2","email":"example@commercebyfigure.com","first_name":"John","gift_message":"","instructions":"","item_count":"1","last_name":"Doe","order_id":"42","order_type":"Web","payment_status":"Paid","phone":"707-287-6262","salutation":"Mr.","shipping_address":"770 3rd St E","shipping_address_2":"","shipping_city":"Sonoma","shipping_company":"","shipping_first_name":"John","shipping_id":"3979","shipping_last_name":"Doe","shipping_method":"11","shipping_method_carrier":"FedEx","shipping_method_code":"FDXGND","shipping_method_name":"Ground","shipping_phone":"707-287-6262","shipping_state":"CA","shipping_title":"Shipping Address","shipping_zip":"95476","ship_status":"Not Shipped","state":"","tax_rate":"8.75","transaction_id":"36","zip":"","products":[{"id":"42","sku":"H","name":"2017 Pinot Meunier","type":"","bottle_size":"750mL","retail_price":"0.00","discount":"0.00","discount_type":"","price":"45","quantity":"1","status":"","description":"2017 Pinot Meunier ","image":"","stock_status":"","shipped":"0","created":"2018-03-23 16:24:18"}]}}
+
+## Orders Payments [/orders/payments]
+
+
+### Get Payment Transactions by creation date [GET /reporting/orders/payment-transations/{start}/{end}]
+
++ Parameters
+  + end: ` `(number, required) - Date for end of the reporting period
+  + start: ` `(string, required) - Date for start of the reporting period
+
+
++ Request (application/json)
+
+    + Headers
+
+            X-Auth-Token: XXXXXXXXX
+
++ Response 200 (application/json)
+
+    + Body
+
+            {"1":{"id":"1","datestamp":"2018-03-14 13:17:05","last_update":"2018-03-14 14:17:05","status":"","subtotal":"14.99","tax":"0.00","shipping":"30.00","discount":"0.00","credits":"0.00","refund":"0.00","total":"44.99","customer_id":"3","address":"123 Main Street","address_2":"","address_id":"6","city":"Anywhere","credit_number":"8431","credit_type":"American Express","discount_customer":"0","email":"eh@hugel.com","email_template":"","first_name":"Jane","group_id":"1","group_name":"Mailing List","item_count":"1","last_name":"Doe","order_id":"1","order_type":"Admin","payment_id":"1","payment_status":"Paid","phone":"","sales_agent":"Sales Agent","sale_credit":"...","shipping_address":"123 Main Street","shipping_address_2":"","shipping_city":"Anywhere","shipping_company":"","shipping_first_name":"Etienne","shipping_last_name":"Hugel","shipping_method":"1","shipping_method_carrier":"custom","shipping_method_code":"UPSGND","shipping_method_name":"Ground","shipping_phone":"(123) 456-7890","shipping_residential":"0","shipping_state":"PA","shipping_zip":"17000","ship_status":"Not Shipped","state":"PA","tax_rate":"0","transaction_id":"1","zip":"17000","products":[{"id":"1","sku":"12831","name":"Domaine Ch�ne","type":"","bottle_size":"","retail_price":"14.99","discount":"0.00","discount_type":"","price":"14.99","quantity":"1","status":"","description":"Domaine Ch�ne ","image":"//s3.amazonaws.com/efcheckout/figureapi/products/12831-9864.jpg","stock_status":"","shipped":"0","created":"2018-03-14 13:17:07"}]},"2":{"id":"2","datestamp":"2018-03-23 16:24:15","last_update":"2018-03-23 16:24:15","status":"","subtotal":"45.00","tax":"3.15","shipping":"20.00","discount":"9.00","credits":"0.00","refund":"0.00","total":"59.15","customer_id":"1","address":"","address_2":"","address_id":"3979","birthday":"1982-11-1","city":"","company":"","credit_id":"19","credit_number":"4242","credit_type":"Visa","customer_credits":"0.00","discount_customer":"0.2","email":"example@commercebyfigure.com","first_name":"John","gift_message":"","instructions":"","item_count":"1","last_name":"Doe","order_id":"42","order_type":"Web","payment_status":"Paid","phone":"707-287-6262","salutation":"Mr.","shipping_address":"770 3rd St E","shipping_address_2":"","shipping_city":"Sonoma","shipping_company":"","shipping_first_name":"John","shipping_id":"3979","shipping_last_name":"Doe","shipping_method":"11","shipping_method_carrier":"FedEx","shipping_method_code":"FDXGND","shipping_method_name":"Ground","shipping_phone":"707-287-6262","shipping_state":"CA","shipping_title":"Shipping Address","shipping_zip":"95476","ship_status":"Not Shipped","state":"","tax_rate":"8.75","transaction_id":"36","zip":"","products":[{"id":"42","sku":"H","name":"2017 Pinot Meunier","type":"","bottle_size":"750mL","retail_price":"0.00","discount":"0.00","discount_type":"","price":"45","quantity":"1","status":"","description":"2017 Pinot Meunier ","image":"","stock_status":"","shipped":"0","created":"2018-03-23 16:24:18"}]}}
