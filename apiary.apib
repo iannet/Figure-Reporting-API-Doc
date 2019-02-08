@@ -1,9 +1,9 @@
 FORMAT: 1A
 HOST: https://api.securecheckout.com/v1/reporting/
 
-# Figure Commerce Reporting
+# Figure Reporting API
 
-Figure Commerce Reporting is an API for consuming data about transactions placed through the Figure Commerce e-commerce platform.
+Figure Reporting is an API for consuming data about transactions placed through the Figure app.
 
 ## Headers
 
@@ -25,7 +25,7 @@ Resources related to Customers.
 ## Customers [/customers]
 
 
-### Get Customer [GET /reporting/customers/{id}]
+### Get Customer [GET /customers/{id}]
 
 + Parameters
   + id: ` `(number, required) - Customer Id
@@ -45,7 +45,7 @@ Resources related to Customers.
 
 
 
-### Get Customers by Last Update Time [GET /reporting/customers/last-update/{start}/{end}/{limit}/{page}]
+### Get Customers by Last Update Time [GET /customers/last-update/{start}/{end}/{limit}/{page}]
 
 + Parameters
   + end: ` `(number, required) - Unix Time stamp for end of reporting period
@@ -68,7 +68,7 @@ Resources related to Customers.
 
 
 
-### Get Customers by Signup Date [GET /reporting/customers/created/{start}/{end}]
+### Get Customers by Signup Date [GET /customers/created/{start}/{end}]
 
 + Parameters
   + end: ` `(number, required) - Date for end of the reporting period
@@ -94,7 +94,7 @@ Resources related to Inventory.
 ## Inventory [/inventory]
 
 
-### Get Current Inventory Levels [GET /reporting/inventory]
+### Get Current Inventory Levels [GET /inventory]
 
 
 + Request (application/json)
@@ -111,7 +111,7 @@ Resources related to Inventory.
 
 
 
-### Get Inventory Movements by Date [GET /reporting/inventory/transactions/{start}/{end}]
+### Get Inventory Movements by Date [GET /inventory/transactions/{start}/{end}]
 
 + Parameters
   + end: ` `(number, required) - Date for end of the reporting period
@@ -137,7 +137,7 @@ Resources related to Orders.
 ## Orders [/orders]
 
 
-### Get Order [GET /reporting/orders/{id}]
+### Get Order [GET /orders/{id}]
 
 + Parameters
   + id: ` `(number, required) - Order Id
@@ -157,7 +157,7 @@ Resources related to Orders.
 
 
 
-### Get Orders by Creation Date [GET /reporting/orders/created/{start}/{end}]
+### Get Orders by Creation Date [GET /orders/created/{start}/{end}]
 
 + Parameters
   + end: ` `(number, required) - Date for end of the reporting period
@@ -178,7 +178,7 @@ Resources related to Orders.
 
 
 
-### Get Orders by Last Update Time [GET /reporting/orders/last-update/{start}/{end}/{limit}/{page}]
+### Get Orders by Last Update Time [GET /orders/last-update/{start}/{end}/{limit}/{page}]
 
 + Parameters
   + end: ` `(number, required) - Unix Time stamp for end of reporting period
@@ -202,7 +202,7 @@ Resources related to Orders.
 ## Orders Inventory [/orders/inventory]
 
 
-### Get Product Transactions by creation date [GET /reporting/orders/product-transations/{start}/{end}]
+### Get Product Transactions by creation date [GET /orders/product-transations/{start}/{end}]
 
 + Parameters
   + end: ` `(number, required) - Date for end of the reporting period
@@ -224,7 +224,7 @@ Resources related to Orders.
 ## Orders Payments [/orders/payments]
 
 
-### Get Payment Transactions by creation date [GET /reporting/orders/payment-transations/{start}/{end}]
+### Get Payment Transactions by creation date [GET /orders/payment-transations/{start}/{end}]
 
 + Parameters
   + end: ` `(number, required) - Date for end of the reporting period
