@@ -157,6 +157,26 @@ Resources related to Orders.
 
 
 
+### Get Order Packages [GET /orders/{id}/packages]
+
++ Parameters
+  + id: ` `(number, required) - Order Id
+
+
++ Request (application/json)
+
+    + Headers
+
+            X-Auth-Token: XXXXXXXXX
+
++ Response 200 (application/json)
+
+    + Body
+
+            [{"id":"206776","TrackingNumber":"1ZA12345A899249621","DateShipped":"2020-04-20","ShipToName":"Jane Doe","Weight":"18","ShipMethod":"UPSGND","Carrier":"UPS"}]
+
+
+
 ### Get Orders by Creation Date [GET /orders/created/{start}/{end}]
 
 + Parameters
