@@ -1,4 +1,4 @@
-GetFORMAT: 1A
+FORMAT: 1A
 HOST: https://api.securecheckout.com/v1/reporting/
 
 # Figure Reporting API
@@ -17,6 +17,50 @@ The *Content-Type* header is a standard header and should be set to application/
 The *X-Auth-Token* header is used to authenticate with the API server. To obtain an API key for your application you will need to contact Offset Partners LLC to request access.
 
 
+
+## Group ClubMembers
+Resources related to ClubMembers.
+
+
+## ClubMembers [/club-members]
+
+
+### Get All Club Memberships [GET /club-members]
+
+
++ Request (application/json)
+
+    + Headers
+
+            X-Auth-Token: XXXXXXXXX
+
++ Response 200 (application/json)
+
+    + Body
+
+            [{"id":"2906","customer":{"id":"25441","first_name":"Andrew","last_name":"Smith","email":"amith@example.com","status":"Active","state":"CA","order_count":"0","order_total":"0.00","last_order":"0000-00-00 00:00:00","last_order_total":"0.00","last_update":"2020-09-20 18:14:24","created":"2020-09-20 18:14:38","active_account":"Yes","agreed_to_mailing_list":"Yes","agreed_to_terms_privacy":"Yes","birthday":"1978-07-15","consent_date":"2020-09-20","consent_time":"18:13:35","consent_token":"L7roMuj9mYgWGPJ0Tf","created_by":"Customer","customer_source":"Web","customer_type":"Mailing List","is_eu":"No","mailing_city":"Carlsbad","mailing_country":"US","mailing_state":"CA","mailing_zip":"92011","mail_marketing_opt_in":"Yes","marketing_opt_in":"Yes","mobile_phone":"5559874321","page_source":"Club","phone":"5559874321","score":"0","signup_browser":"Safari","signup_browser_device_type":"Mobile Phone","signup_browser_platform":"iOS","signup_browser_version":"0.0","signup_ip_address":"72.173.65.42","signup_user_agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 13_6_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.2 Mobile/15E148 Safari/604.1","website_source":"https://www.sommselect.com"},"address":{"id":"20849","hash":"982aa178faab13c6376dd5f849234f3fcf02bbb0","created":"2020-09-20 18:15:57","last_update":"2020-09-20 18:15:42","title":"","salutation":"Mr.","first_name":"Andrew","last_name":"Smith","birthday":"1978-07-17","company":"","phone":"5559874321","email":"asmith@example.com","address":"421 Fourth St","address_2":"","city":"Carlsbad","state":"CA","zip":"92011","zip_ext":"1382","country":"US","lat":"47.59518000","long":"-120.66152000","residential":"0","verified":"1","customer_id":"25441","default":"1","public":"0"},"payment":{"id":"23744","fingerprint":"","account_token":"cus_I6OdAnnnBBcw6V","payment_token":"card_0HWBq3ukqU3e0iSqqNEnfoVf","credit_type":"American Express","credit_number":"1013","credit_expires_month":"6","credit_expires_year":"2023","profile_id":"0","payment_profile_id":"0","first_name":"Andrew","birthday":"","phone":"","company":"","last_name":"Smith","address":"421 Fourth St","address_2":"","city":"Carlsbad","state":"CA","zip":"92011","country":"US","customer_id":"25441","default":"1","created":"2020-09-27 19:11:54","last_update":"0000-00-00 00:00:00"},"authorization":"","error":"","amount":"0","total":"0","created":"2020-09-27 19:14:51"},{"id":"2905","customer":{"id":"2542","first_name":"William","last_name":"Williamstein","email":"example@hotmail.com","status":"Active","state":"CA","order_count":"1","order_total":"34.00","last_order":"2020-09-27 00:00:00","last_order_total":"34.00","last_update":"2020-09-27 17:44:18","created":"2020-09-27 17:41:31","active_account":"Yes","agreed_to_mailing_list":"Yes","agreed_to_terms_privacy":"Yes","birthday":"1987-02-20","consent_date":"2020-09-27","consent_time":"17:40:37","consent_token":"QGKq2EHATJrhyPLkw4","created_by":"Customer","customer_source":"Web","customer_type":"Mailing List","is_eu":"No","mailing_city":"Napa","mailing_country":"US","mailing_state":"CA","mailing_zip":"94559","mail_marketing_opt_in":"Yes","marketing_opt_in":"Yes","mobile_phone":"5551239876","page_source":"Club","phone":"example@hotmail.com","score":"0","signup_browser":"Chrome","signup_browser_device_type":"Tablet","signup_browser_platform":"iOS","signup_browser_version":"0.0","signup_ip_address":"199.66.65.241","signup_user_agent":"Mozilla/5.0 (iPad; CPU OS 14_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/85.0.4183.109 Mobile/15E148 Safari/604.1","website_source":"https://www.sommselect.com"},"address":{"id":"21030","hash":"07722a8d21d89a26ab76640df71eeabb9b18fe1c","created":"2020-09-27 17:42:13","last_update":"2020-09-27 17:42:01","title":"","salutation":"Mr.","first_name":"William","last_name":"Williamstein","birthday":"1987-02-20","company":"Prefix *","phone":"5551239876","email":"example@hotmail.com","address":"888 Professor Ln","address_2":"","city":"Oswego","state":"IL","zip":"60543","zip_ext":"2002","country":"US","lat":"41.68245000","long":"-88.32405000","residential":"1","verified":"1","customer_id":"2542","default":"1","public":"0"},"payment":{"id":"23744","fingerprint":"","account_token":"cus_xxxx","payment_token":"card_xxxx","credit_type":"Visa","credit_number":"7999","credit_expires_month":"08","credit_expires_year":"2023","profile_id":"0","payment_profile_id":"0","first_name":"William","birthday":"","phone":"","company":"","last_name":"Williamstein","address":"888 Professor Ln","address_2":"","city":"Napa","state":"CA","zip":"94559","country":"US","customer_id":"2542","default":"1","created":"2020-09-27 17:42:45","last_update":"0000-00-00 00:00:00"},"authorization":"","error":"","amount":"0","total":"0","created":"2020-09-27 17:43:05"}]
+
+## Group Clubs
+Resources related to Clubs.
+
+
+## Clubs [/clubs]
+
+
+### Get List of Clubs [GET /clubs]
+
+
++ Request (application/json)
+
+    + Headers
+
+            X-Auth-Token: XXXXXXXXX
+
++ Response 200 (application/json)
+
+    + Body
+
+            {"5":{"id":"5","name":"Founders Club","description":"Red. Only. Need we say more? You won't regret this commitment. Look for a case of our finest red selections to arrive at your door in January, May and November. In order to insure that each shipment will showcase seasonally appropriate wines we've asked our in-house chef, Michel Brassica to work with our winemaker to hand-select wines that will pair perfectly with the dishes of the season. Who knows, he might even through in some of his award-winning recipes...","discount":"20","free_shipping":"0","club_confirmation_message":"We greatly appreciate your commitment to support the consumption of legendary red wines. \r\nSalud!\r\n\r\n- The Acme Vineyards Crew","club_info_1":"<ul><li>Shipments 3 times a year:&nbsp;Jan, May &amp; Nov<\/li><li>Private tastings by appointment<\/li><li>Exclusive Invites to Special Events<\/li><li>First access to limited release white wines<\/li><\/ul>","club_info_2":"$300 per shipment<br \/>(tax and shipping not included)","club_info_3":"","sort":"1"},"4":{"id":"4","name":"Acme Refreshing Whites Club","description":"If you've ever had a chance to visit the Napa Valley then you know firsthand that there are fantastic whites being produced right alongside the legendary reds \u2014 they are just in slightly shorter supply.  So don't just settle for whatever your local Trader Joe's has on hand  -- sign on to receive a selection of fantastic white wines available only through our exclusive <em>Refreshing Whites Club<\/em> and we'll be sure that three times a year 12 outstanding bottles will arrive at your doorstep.","discount":"15","free_shipping":"1","club_confirmation_message":"We're so glad you've come to your senses and joined the club!\r\n\r\n- The Acme Vineyards Crew","club_info_1":"<ul><li>Shipments 3 times a year:&nbsp;Jan, May &amp; Nov<\/li><li>Private tastings by appointment<\/li><li>Exclusive Invites to Special Events<\/li><li>First access to limited release white wines<\/li><\/ul>","club_info_2":"$200 - $230 per shipment<br \/>(tax and shipping not included)","club_info_3":"","sort":"2"}}
 
 ## Group Customers
 Resources related to Customers.
@@ -68,10 +112,12 @@ Resources related to Customers.
 
 
 
-### Get Customers by Signup Date [GET /customers/created/{start}/{end}]
+### Get Customers by Signup Date [GET /customers/created/{start}/{end}/{limit}/{page}]
 
 + Parameters
   + end: ` `(string, required) - Date for end of the reporting period
+  + limit: ` `(number, required) - Number of records returned per page
+  + page: ` `(number, required) - Page Number
   + start: ` `(string, required) - Date for start of the reporting period
 
 
